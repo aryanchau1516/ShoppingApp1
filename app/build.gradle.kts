@@ -62,4 +62,14 @@ dependencies {
     var nav_version = "2.8.9"
 
     implementation ("androidx.navigation:navigation-compose:$nav_version")
+    implementation("io.coil-kt.coil3:coil-compose:3.1.0")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
+//    implementation ("com.google.accompanist:accompanist-pager:0.34.0")
+//    // Pager Indicators (dots)
+//    implementation ("com.google.accompanist:accompanist-pager-indicators:0.34.0")
+//    implementation ("com.google.accompanist:accompanist-pager:0.34.0")
+//    implementation ("com.google.accompanist:accompanist-pager-indicators:0.34.0")
+     implementation("com.tbuonomo:dotsindicator:5.1.0")
+    //implementation 'com.tbuonomo:dotsindicator:4.3'
+
 }
