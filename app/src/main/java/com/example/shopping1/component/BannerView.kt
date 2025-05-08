@@ -2,6 +2,7 @@ package com.example.shopping1.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -38,7 +39,7 @@ fun BannerView(modifier: Modifier = Modifier) {
         }
         HorizontalPager(state = pagerState, pageSpacing = 24.dp) {
             AsyncImage(model = bannerList.get(it), contentDescription = "",
-                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)))
+                modifier = Modifier.fillMaxWidth().padding(bottom = 3.dp).clip(RoundedCornerShape(16.dp)))
         }
         DotsIndicator(
             dotCount = bannerList.size,
