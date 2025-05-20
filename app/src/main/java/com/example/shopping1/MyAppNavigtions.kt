@@ -10,6 +10,7 @@ import com.example.myapplication.screens.AuthScreen
 import com.example.myapplication.screens.LoginScreen
 import com.example.myapplication.screens.SignUpScreen
 import com.example.shopping1.pages.CategoriesProductPages
+import com.example.shopping1.pages.ProductDetailPage
 import com.example.shopping1.screens.HomeScreen
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
@@ -36,6 +37,10 @@ fun AppNavigation(modifier: Modifier = Modifier) {
         composable("categoryPage/{categoryId}") {
             var categoryId = it.arguments?.getString("categoryId")
             CategoriesProductPages( categoryId=categoryId?:"")
+        }
+        composable("ProductDetailPage/{productId}") {
+            var productId = it.arguments?.getString("productId")
+            ProductDetailPage( productId=productId?:"")
         }
 
     }
