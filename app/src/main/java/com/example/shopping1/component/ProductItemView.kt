@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
@@ -34,6 +35,7 @@ import com.example.shopping1.model.ProductModel
 
 @Composable
 fun ProductItemView(modifier: Modifier, productModel: ProductModel) {
+    val context = LocalContext.current
     Card(
         modifier = modifier.padding(8.dp).clickable{
             GlobalNavigation.navController.navigate("ProductDetailPage/"+productModel.id)
@@ -79,7 +81,9 @@ fun ProductItemView(modifier: Modifier, productModel: ProductModel) {
                 )
 
                 Spacer(modifier = Modifier.weight(1f))
-                IconButton(onClick = {}) {
+                IconButton(onClick = {
+                    AppUtil.addItem(productID = productModel.id, context = context)
+                }) {
                   Icon(
                       imageVector = Icons.Default.ShoppingCart,
                       contentDescription = null

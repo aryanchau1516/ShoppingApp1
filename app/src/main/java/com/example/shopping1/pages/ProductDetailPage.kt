@@ -35,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
@@ -51,7 +52,7 @@ import com.tbuonomo.viewpagerdotsindicator.compose.type.ShiftIndicatorType
 
 @Composable
 fun ProductDetailPage(modifier: Modifier = Modifier, productId: String) {
-
+    var context = LocalContext.current
     var product by remember { mutableStateOf(ProductModel()) }
     LaunchedEffect(key1 = Unit) {
         Firebase.firestore.collection("data")
@@ -145,21 +146,44 @@ fun ProductDetailPage(modifier: Modifier = Modifier, productId: String) {
             }
 
 
-
         }
         Spacer(modifier = Modifier.width(8.dp))
-        Button(onClick = {}, modifier = Modifier
-            .fillMaxWidth()
-            .height(50.dp)) {
+        Button(
+            onClick = {
+                AppUtil.addItem(productId, context = context)
+            }, modifier = Modifier
+                .fillMaxWidth()
+                .height(40.dp)
+        ) {
 
             Text(text = "Add to cart", fontSize = 16.sp, fontWeight = FontWeight.Bold)
 
         }
         Spacer(modifier = Modifier.width(8.dp))
-        Text(text= "Product Description : ", fontWeight = FontWeight.SemiBold,
-            fontSize = 18.sp)
+        Text(
+            text = "Product Description : ", fontWeight = FontWeight.SemiBold,
+            fontSize = 18.sp
+        )
         Spacer(modifier = Modifier.height(8.dp))
         Text(text = product.description, fontSize = 16.sp)
+        Spacer(modifier = Modifier.height(16.dp))
+
+        if (product.othervalue.isNotEmpty())
+            Text(
+                text = "Other Product Details : ", fontWeight = FontWeight.SemiBold,
+                fontSize = 18.sp
+            )
+        Spacer(modifier = Modifier.height(8.dp))
+        product.othervalue.forEach { (key, value) ->
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp)) {
+                Text(text = " $key : ", fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
+                Text(text = value, fontSize = 16.sp)
+
+
+            }
+        }
 
 
     }

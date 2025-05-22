@@ -1,7 +1,8 @@
 package com.example.myapplication.viewModel
 
+import UserModel
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.model.UserModel
+
 import com.google.firebase.Firebase
 
 import com.google.firebase.auth.auth
